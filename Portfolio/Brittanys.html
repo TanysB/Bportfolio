@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brittanys Torres - Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Dancing Script', cursive;
+            background-color: #faf5ff;
+            color: #333;
+            line-height: 1.6;
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced Computer Science Background Elements */
+        .cs-background-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        
+        .binary-code {
+            position: absolute;
+            color: #333;
+            font-family: monospace;
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+            transition: opacity 0.5s ease;
+        }
+        
+        .binary-code:hover {
+            opacity: 0.8;
+        }
+        
+        .code-snippet {
+            position: absolute;
+            color: #555;
+            font-family: monospace;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .code-snippet:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 2;
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 182, 193, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* 3D Navigation - Lighter Pink */
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            background-color: #ffdfeb; /* Lighter pink */
+            border-bottom: 1px solid #e8e8e8;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-item {
+            background-color: #f9e6ee;
+            color: #333;
+            padding: 12px 60px; /* Longer buttons */
+            margin: 0 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.1),
+                0 4px 0 #f8c8db,
+                0 6px 0 #f5b8cf;
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-item:hover {
+            background-color: #f3d0e0;
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 20px rgba(0, 0, 0, 0.15),
+                0 6px 0 #f8c8db,
+                0 8px 0 #f5b8cf;
+        }
+        
+        .nav-item:active {
+            transform: translateY(2px);
+            box-shadow: 
+                0 2px 5px rgba(0, 0, 0, 0.15),
+                0 1px 0 #f8c8db,
+                0 2px 0 #f5b8cf;
+            transition: all 0.1s ease;
+        }                                                        
+
+        
+        /* Add spacing below fixed nav */
+        .header {
+            margin-top: 120px;
+            text-align: center;
+            position: relative;
+        }                                                                        
+        
+        /* Enhanced Laptop Design with Realistic Desktop */
+        .laptop-container {
+            max-width: 700px;
+            margin: 50px auto;
+            position: relative;
+            transform: scale(0);
+            opacity: 0;
+            animation: turnOnLaptop 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.5s;
+        }
+        
+        @keyframes turnOnLaptop {                            
+            0% {                    
+                transform: scale(0.8);
+                opacity: 0;                  
+            }
+            20% {
+                transform: scale(0.85);
+                opacity: 0.2;
+            }                    
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }                       
+        
+        .laptop-outline {
+            width: 100%;
+            border-radius: 15px 15px 0 0;
+            padding: 10px; /* Slimmer outline */
+            background: linear-gradient(to bottom, #8e8e93, #d1d1d6);
+            position: relative;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            aspect-ratio: 16/10; /* More realistic laptop aspect ratio */
+        }
+        
+        .laptop-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            background-color: #000;
+            opacity: 0;
+            animation: screenTurnOn 2.5s ease-in-out forwards 1s;
+        }
+        
+        @keyframes screenTurnOn {
+            0% {
+                opacity: 0;
+                background-color: #000;
+            }
+            10% {
+                opacity: 0.3;
+                background-color: #111;
+            }
+            20% {
+                opacity: 0.6;
+                background-color: #0a0a0a;
+            }
+            30% {
+                opacity: 1;
+                background-color: #0066cc; /* Blue startup screen */
+            }
+            40% {
+                opacity: 1;
+                background-color: #0099ff;
+            }
+            45% {
+                opacity: 1;
+                background-color: #ffffff;
+            }
+            50% {
+                opacity: 1;
+                background-color: #f0f0f0; /* Desktop background */
+            }
+            100% {
+                opacity: 1;
+                background-color: #f0f0f0; /* Desktop background */
+            }
+        }
+        
+        /* Startup Logo */
+        .startup-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            opacity: 0;
+            animation: logoAppear 1.5s ease-in-out forwards 1.5s;
+        }
+        
+        @keyframes logoAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            99% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .loading-bar-container {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: showLoadingBar 0.3s ease-in forwards 2s,
+                       hideLoadingBar 0.3s ease-out forwards 3.8s;
+        }
+        
+        @keyframes showLoadingBar {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes hideLoadingBar {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background-color: white;
+            border-radius: 2px;
+            animation: loadingProgress 1.8s ease-in-out forwards 2s;
+        }
+        
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            40% { width: 30%; }
+            70% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        /* Enhanced Desktop Environment */
+        .desktop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards 3.5s;
+            background-image: url('https://via.placeholder.com/1920x1080/f0f0f0/f0f0f0');
+            background-size: cover;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .desktop-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .desktop-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .desktop-icon:hover {
+            transform: scale(1.05);
+        }
+        
+        .icon-img {
+            width: 45px;
+            height: 45px;
+            background-color: #ffb6c1;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease;
+        }
+        
+        .desktop-icon:hover .icon-img {
+            background-color: #ff99ab;
+        }
+        
+        .icon-text {
+            font-size: 12px;
+            color: #333;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Taskbar */
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .start-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ffb6c1;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .start-button:hover {
+            background-color: #ff99ab;
+        }
+        
+        /* Search Bar - ENLARGED */
+        .search-bar-container {
+            flex: 1;
+            max-width: 500px; /* Increased from 400px */
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards 4.2s;
+        }
+        
+        .search-bar {
+            width: 100%;
+            height: 35px; /* Increased from 30px */
+            border-radius: 18px; /* Increased from 15px */
+            border: none;
+            background-color: #f0f0f0;
+            padding: 0 40px 0 15px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            font-size: 16px; /* Increased from 14px */
+            transition: all 0.3s ease;
+            animation: searchBarPulse 0.5s ease-in-out 5s;
+        }
+        
+        @keyframes searchBarPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 2px #ffb6c1; }
+            100% { transform: scale(1); }
+        }
+        
+        .search-bar:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 2px #ffb6c1;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 16px; /* Increased from 14px */
+        }
+        
+        /* Zoomed Search Bar for Name Animation */
+        .search-zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(240, 240, 240, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            backdrop-filter: blur(3px);
+            animation: showZoomedSearch 0.5s ease-in-out forwards 5.5s;
+        }
+        
+        @keyframes showZoomedSearch {
+            0% {
+                opacity: 0;
+                visibility: visible;
+            }
+            100% {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        .search-zoom-container {
+            width: 90%; /* Increased from 80% */
+            max-width: 600px; /* Increased from 500px */
+            position: relative;
+            transform: scale(0.5);
+            animation: scaleUpSearch 0.5s ease-in-out forwards 5.7s;
+        }
+        
+        @keyframes scaleUpSearch {
+            0% {
+                transform: scale(0.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .search-zoomed {
+            width: 100%;
+            height: 60px; /* Increased from 50px */
+            border-radius: 30px; /* Increased from 25px */
+            border: none;
+            background-color: white;
+            padding: 0 60px 0 25px; /* Increased padding */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            font-size: 22px; /* Increased from 20px */
+        }
+        
+        .search-zoom-icon {
+            position: absolute;
+            right: 20px; /* Increased from 15px */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 24px; /* Increased from 20px */
+        }
+        
+        /* Typing Animation for Name - MODIFIED TO TYPE FROM RIGHT SIDE */
+        .typed-name {
+            position: absolute;
+            left: 15px; /* Position at left of search bar */
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-family: 'Dancing Script', cursive; /* Changed to cursive font */
+            font-size: 28px; /* Increased from 20px */
+            opacity: 0;
+            animation: fadeIn 0.1s ease forwards 6.2s, 
+                       nameZoom 1.5s ease-in-out forwards 7.8s; /* Added zoom animation */
+        }
+        
+        @keyframes nameZoom {
+    0% {
+        transform: translateY(-50%) scale(1);
+        top: 50%;
+        left: 25px;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        top: 50%;
+        left: 50%;
+        opacity: 1;
+    }
+}
+        .typed-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typeText 1.5s steps(16, end) forwards 6.3s;
+        }
+        
+        @keyframes typeText {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 30px;
+    background-color: #333;
+    vertical-align: middle;
+    margin-left: 1px;
+    animation: blink 1s step-end infinite, cursorFadeOut 0.5s forwards 7.8s;
+}
+
+@keyframes cursorFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+        /* Fade out search bar when name animation completes */
+        .search-fade {
+            animation: searchFadeOut 1s ease-in-out forwards 7.8s;
+        }
+        
+        @keyframes searchFadeOut {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+        
+        .desktop-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 25px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 2px;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            opacity: 0;
+            animation: moveCursor 4s ease-in-out 4s forwards;
+        }
+        
+        @keyframes moveCursor {
+            0% { 
+                top: 50%; 
+                left: 60%; 
+                opacity: 1; 
+            }
+            30% { 
+                top: 80%; 
+                left: 50%; 
+                opacity: 1; 
+            }
+            50% { 
+                top: 85%; 
+                left: 55%; 
+                opacity: 1;
+            }
+            60% {
+                top: 85%;
+                left: 50%;
+                opacity: 1;
+            }
+            70% {
+                top: 85%;
+                left: 50%;
+                opacity: 1;
+            }
+            100% { 
+                top: 85%; 
+                left: 50%; 
+                opacity: 0;
+            }
+        }
+        
+        .laptop-base {
+            height: 10px; /* Slimmer base */
+            background: linear-gradient(to bottom, #8e8e93, #d1d1d6);
+            border-radius: 0 0 15px 15px;
+            margin: 0 auto;
+            width: 90%;
+            position: relative;
+        }
+        
+        .laptop-indent {
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background-color: #7d7d82;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        /* Photo Display */
+        .photo-container {
+            max-width: 400px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .profile-photo {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Contact Row with Pink Icons */
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 25px;
+            font-size: 1.4rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 2px solid #ffb6c1;
+            border-radius: 50%;
+            margin-right: 15px;
+            color: #333;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(255, 182, 193, 0.3);
+        }
+        
+        .location-icon {
+            color: #ff6b8b;
+        }
+        
+        .highlight {
+            font-style: italic;
+            color: #6a0dad;
+            font-weight: 700;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+        }
+        
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        /* Gallery/Portfolio Section */
+        .gallery-container {
+            max-width: 700px;
+            margin: 30px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .gallery {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item {
+            min-width: 100%;
+            height: 400px;
+            background-color: #f0f9ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .gallery-btn {
+            background: none;
+            border: 2px solid #ffb6c1;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-family: 'Dancing Script', cursive;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
+        }
+        
+        .gallery-btn:hover {
+            background-color: #ffb6c1;
+            color: white;
+        }
+        
+        .gallery-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(255, 182, 193, 0.3);
+        }
+        
+        /* Career Interest Section */
+        .cs-background {
+            background-color: #f8f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #ffb6c1;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background-color: #f9d5dc;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #ffdfeb;
+            border-top: 1px solid #e8e8e8;
+            font-size: 1.2rem;
+            color: #333;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Computer Science Background Elements -->
+    <div class="cs-background-effect" id="csBackground"></div>
+    
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-item" onclick="window.location.href='resume.jpg'">Resume</div>
+        <div class="nav-item" onclick="window.location.href='about_me.html'">About me</div>
+        
+        
+    </div>
+
+    
+
+    <script>
+        // Function to toggle sections based on navigation clicks
+        function showSection(section) {
+            if (section === 'education') {
+                document.getElementById('educationSection').style.display = 'block';
+            } else {
+                document.getElementById('educationSection').style.display = 'none';
+            }
+        }
+
+        // Initially hiding the Education section
+        document.getElementById('educationSection').style.display = 'none';
+    </script>
+    
+    
+    <div class="container">
+        <!-- Header Section with Laptop Design -->
+        <div class="header">
+            <div class="laptop-container">
+                <div class="laptop-outline">
+                    <div class="laptop-screen">
+                        <!-- Startup Elements -->
+                        <div class="startup-logo">BT</div>
+                        <div class="loading-bar-container">
+                            <div class="loading-bar"></div>
+                        </div>
+                        
+                        <div class="cursor"></div>
+                        
+                        <!-- Desktop Environment -->
+                        <div class="desktop">
+                            <div class="desktop-top">
+                                <div class="desktop-icons">
+                                    <div class="desktop-icon">
+                                        <div class="icon-img">📁</div>
+                                        <div class="icon-text">Projects</div>
+                                    </div>
+                                    <div class="desktop-icon">
+                                        <div class="icon-img">📁</div>
+                                        <div class="icon-text">Resume</div>
+                                    </div>
+                                    <div class="desktop-icon">
+                                        <div class="icon-img">📝</div>
+                                        <div class="icon-text">Notes</div>
+                                    </div>
+                                    <div class="desktop-icon">
+                                        <div class="icon-img">💻</div>
+                                        <div class="icon-text">Terminal</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Taskbar -->
+                            <div class="taskbar">
+                                <div class="start-button">
+                                    <span>B</span>
+                                </div>
+                                <div class="search-bar-container" id="searchBarContainer">
+                                    <input type="text" class="search-bar" placeholder="Search...">
+                                    <span class="search-icon">🔍</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Zoomed Search Bar Overlay -->
+                        <div class="search-zoom-overlay" id="searchZoomOverlay">
+                            <div class="search-zoom-container">
+                                <input type="text" class="search-zoomed search-fade" id="zoomedSearch">
+                                <span class="search-zoom-icon search-fade">🔍</span>
+                                <div class="typed-name">
+                                    <span class="typed-text">Brittanys Torres</span>
+                                    <span class="typed-cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="laptop-base">
+                    <div class="laptop-indent"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Photo Display -->
+        <div class="photo-container">
+            <img src="MyPhoto.jpg" alt="Brittanys Torres" class="profile-photo">
+            <img src="OtherPhoto.jpg" alt="Second Photo" class="profile-photo">
+        </div>
+
+        <style>
+            .photo-container {
+                display: flex;
+                justify-content: center;
+                gap: 40px; /* Space between photos */
+            }
+            
+            .profile-photo {
+                width: 150px; /* Set your desired width */
+                height: auto;
+            }
+        </style>
+
+        <!-- Contact Row with Pink Icons -->
+        <div class="contact-row">
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <a href="mailto:TanysBrittanys@outlook.com" class="highlight">TorresBrittany@outlook.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">in</div>
+                <a href="https://www.linkedin.com/in/brittanys-torres-903519301" class="highlight">Link to LinkedIn</a>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon location-icon">📍</div>
+                <span class="highlight">Long Beach, CA</span>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Career Goals Section -->
+            <div id="career" class="section active">
+
+        <!-- Add this to your HTML body after the main-content div -->
+<div id="aboutMeSection" class="section">
+    <h2 class="section-title">About Me</h2>
+    
+    <div class="about-content">
+        <div class="about-text">
+            <p>I am currently 21 years old and a senior at CSULB pursuing a Computer Science major. As a first-generation DREAM student, I am proud to be part of the DSC center at school, which provides valuable resources to help undocumented students.</p>
+            
+            <p>My passion for Computer Science began in high school when I joined the tech pathway and started taking CS classes. Recently, I discovered an interest in data sets and databases while working for Catalina Island.</p>
+            
+            <p>My current goal is to develop more skills in datasets as a business administrator in Catalina and combine my knowledge with CS to research, analyze, and build software that bridges both worlds.</p>
+            
+            <p>I am constantly learning new skills and embracing experiences that help me grow as a person.</p>
+            
+            <div class="fun-facts">
+                <h3 class="subsection-title">Fun Facts</h3>
+                <ul class="facts-list">
+                    <li><span class="fact-icon">👑</span> I am the oldest sibling</li>
+                    <li><span class="fact-icon">♊</span> I am a Gemini</li>
+                    <li><span class="fact-icon">💃</span> I love dancing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add this CSS to your existing style section -->
+<style>
+    /* About Me Section Styles */
+    .section-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 3rem;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .section-title:after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background-color: #ffb6c1;
+        margin: 10px auto 0;
+        border-radius: 3px;
+    }
+    
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-text {
+        max-width: 800px;
+        font-family: 'Cinzel', serif;
+        line-height: 1.8;
+    }
+    
+    .about-text p {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.1rem;
+    }
+    
+    .subsection-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2rem;
+        color: #333;
+        margin: 30px 0 15px;
+    }
+    
+    .fun-facts {
+        background-color: #fff5f7;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 30px;
+        border-left: 4px solid #ffb6c1;
+    }
+    
+    .facts-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .facts-list li {
+        font-family: 'Cinzel', serif;
+        margin: 15px 0;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .fact-icon {
+        margin-right: 15px;
+        font-size: 1.5rem;
+    }
+    
+    /* Make sure we have Cinzel font imported */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+</style>
+
+<!-- Add this JavaScript after your existing script -->
+<script>
+    // Improved function to toggle sections based on navigation clicks
+    function showSection(section) {
+        // Hide all sections first
+        const allSections = document.querySelectorAll('.section');
+        allSections.forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        // Show the selected section
+        if (section === 'About Me') {
+            document.getElementById('aboutMeSection').classList.add('active');
+        } else if (section === 'projects') {
+            // Placeholder for your projects section
+            // document.getElementById('projectsSection').classList.add('active');
+            alert('Projects section coming soon!');
+        } else if (section === 'education') {
+            document.getElementById('educationSection').classList.add('active');
+        } else {
+            // Default to About Me if no valid section is selected
+            document.getElementById('aboutMeSection').classList.add('active');
+        }
+    }
+    
+    // Initialize the page with About Me section visible by default
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('About Me');
+    });
+</script>
