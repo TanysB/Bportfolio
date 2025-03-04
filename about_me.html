@@ -276,7 +276,7 @@
             box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
         }
         
-        /* Journey Timeline */
+        /* Journey Timeline with 3D Spinning Effect */
         .timeline {
             position: relative;
             max-width: 800px;
@@ -303,6 +303,7 @@
             animation: fadeInScale 3s ease;
             animation-fill-mode: both;
             animation-delay: calc(var(--index) * 0.5s);
+            perspective: 1000px; /* Add perspective for 3D effect */
         }
         
         .timeline-item::after {
@@ -336,6 +337,41 @@
             position: relative;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s;
+            transform-style: preserve-3d; /* Enable 3D transformations */
+            height: 100%; /* Ensure consistent height */
+            min-height: 180px; /* Increased minimum height to prevent overlap */
+        }
+        
+        /* The spinning door effect */
+        .timeline-content:hover {
+            transform: rotateY(180deg);
+        }
+        
+        .timeline-front, .timeline-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .timeline-front {
+            background-color: white;
+            color: #333;
+        }
+        
+        .timeline-back {
+            background-color: #ffdfeb;
+            color: #333;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-style: italic;
         }
         
         .timeline-content h3 {
@@ -467,31 +503,51 @@
                 <p style="--delay: 1">I am currently 21 years old and a senior at California State University, Long Beach pursuing a degree in Computer Science. As a first-generation <span class="highlight">Dreamer student</span>, I am a big advocate for equitable opportunities for all students.</p>
             </section>
             
-            <!-- Timeline Section -->
+            <!-- Timeline Section with 3D Spinning Effect -->
             <h2>My Journey</h2>
             <div class="timeline">
                 <div class="timeline-item left" style="--index: 1">
                     <div class="timeline-content">
-                        <h3>High School</h3>
-                        <p>I developed my passion for Computer Science in high school when I joined the tech pathway and started taking CS classes.</p>
+                        <div class="timeline-front">
+                            <h3>High School</h3>
+                            <p>I developed my interest for Computer Science in high school when I joined the tech pathway and started taking CS classes.</p>
+                        </div>
+                        <div class="timeline-back">
+                            <p>My tech pathway experience sparked a lifelong passion for technology and problem-solving.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item right" style="--index: 2">
                     <div class="timeline-content">
-                        <h3>College</h3>
-                        <p>Pursuing a Computer Science degree at CSULB as a first-generation student.</p>
+                        <div class="timeline-front">
+                            <h3>College</h3>
+                            <p>Pursuing a Computer Science bachelors degree at CSULB as a first-generation student.</p>
+                        </div>
+                        <div class="timeline-back">
+                            <p>Breaking barriers and creating new opportunities through higher education.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item left" style="--index: 3">
                     <div class="timeline-content">
-                        <h3>Catalina Island</h3>
-                        <p>Recently, I discovered an interest in datasets and databases while working for Catalina Island.</p>
+                        <div class="timeline-front">
+                            <h3>Present Day</h3>
+                            <p>I discovered my passion for data analysis while interning at Catalina. Currently, I'm creating report templates, data scrubbing, and handling insurance and lease filing.</p>
+                        </div>
+                        <div class="timeline-back">
+                            <p>Finding joy in data and discovering the power of analytical thinking.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item right" style="--index: 4">
                     <div class="timeline-content">
-                        <h3>Present Day</h3>
-                        <p>Working as a business administrator in Catalina while combining my knowledge with CS skills.</p>
+                        <div class="timeline-front">
+                            <h3>Project 91</h3>
+                            <p>At Project 91, I assist with document filing, email correspondence, and preparing analytical reports.</p>
+                        </div>
+                        <div class="timeline-back">
+                            <p>Building professional experience and applying my technical skills in real-world settings.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -499,7 +555,6 @@
             <section>
                 <h2>My Goals</h2>
                 <p style="--delay: 2">My current goal is to develop more skills in data management as a business administrator in Catalina and combine my knowledge with CS to start researching, analyzing, and building software that integrates both fields.</p>
-                <p style="--delay: 3">I am learning new skills every day and gaining experiences that help me grow as a person.</p>
             </section>
             
             <!-- Skills Section -->
