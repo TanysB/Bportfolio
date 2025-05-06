@@ -22,6 +22,7 @@
             background-attachment: fixed;
             position: relative;
             overflow-x: hidden;
+            letter-spacing: 0.3px;
         }
         
         .container {
@@ -289,8 +290,8 @@
             position: absolute;
             width: 6px;
             background-color: #ffb6c1;
-            top: 0;
-            bottom: 0;
+            top: -50px;  /* Extend 50px above the timeline */
+            bottom: -200px;  /* Extend 50px below the timeline */
             left: 50%;
             margin-left: -3px;
             border-radius: 3px;
@@ -379,6 +380,59 @@
             font-size: 1.8rem;
             margin-bottom: 10px;
             color: #333;
+        }
+        
+        /* Accomplishments Section */
+        .accomplishments {
+            background-color: #fff5f7;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 45px 0;
+            border-right: 5px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
+            animation: fadeIn 1.8s ease;
+        }
+        
+        .accomplishments h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .accomplishments-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        
+        .accomplishments-list li {
+            position: relative;
+            padding: 12px 0 12px 35px;
+            font-size: 1.1rem;
+            animation: fadeInUp 1.5s ease;
+            animation-fill-mode: both;
+            animation-delay: calc(var(--item) * 0.2s);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .accomplishments-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 10px;
+            color: #ff69b4;
+            font-size: 1.3rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .accomplishments-list {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Footer */
@@ -481,6 +535,19 @@
             color: #6a0dad;
             font-weight: 700;
         }
+        
+        /* Badge for graduation date */
+        .grad-badge {
+            display: inline-block;
+            background-color: #ffb6c1;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            color: #333;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -521,7 +588,7 @@
                     <div class="timeline-content">
                         <div class="timeline-front">
                             <h3>College</h3>
-                            <p>Pursuing a Computer Science bachelors degree at CSULB as a first-generation student.</p>
+                            <p>Pursuing a Computer Science bachelors degree at CSULB as a first-generation student. <span class="grad-badge">Expected Graduation: Spring 2026</span></p>
                         </div>
                         <div class="timeline-back">
                             <p>Breaking barriers and creating new opportunities through higher education.</p>
@@ -531,30 +598,48 @@
                 <div class="timeline-item left" style="--index: 3">
                     <div class="timeline-content">
                         <div class="timeline-front">
-                            <h3>Present Day</h3>
-                            <p>I discovered my passion for data analysis while interning at Catalina. Currently, I'm creating report templates, data scrubbing, and handling insurance and lease filing.</p>
+                            <h3>Internships</h3>
+                            <p>I discovered my interest for data analysis while interning at Catalina Island as a Business Administrator (August 2024 - May 2025).</p>
                         </div>
                         <div class="timeline-back">
-                            <p>Finding joy in data and discovering the power of analytical thinking.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item right" style="--index: 4">
-                    <div class="timeline-content">
-                        <div class="timeline-front">
-                            <h3>Project 91</h3>
-                            <p>At Project 91, I assist with document filing, email correspondence, and preparing analytical reports.</p>
-                        </div>
-                        <div class="timeline-back">
-                            <p>Building professional experience and applying my technical skills in real-world settings.</p>
+                            <p>Finding joy in data and discovering the power of analytical thinking while building professional experience in both administrative and technical roles.</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="timeline-item right" style="--index: 2">
+                <div class="timeline-content">
+                    <div class="timeline-front">
+                        <h3>Jobs</h3>
+                        <p> Working as a Personal Assistant at Project 91, a truck business, I handled document filing, email correspondence, and analytical reports.</p>
+                    </div>
+                    <div class="timeline-back">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accomplishments Section (New) -->
+            
+
+            <section class="accomplishments">
+                <h2>Professional Accomplishments</h2>
+                <ul class="accomplishments-list">
+                    <li style="--item: 1">Dissecting and analyzing commercial and land leases</li>
+                    <li style="--item: 2">Data scrubbing and database management</li>
+                    <li style="--item: 3">Filing and tracking insurance documentation</li>
+                    <li style="--item: 4">Managing employee housing records</li>
+                    <li style="--item: 5">Processing permits and property datasets</li>
+                    <li style="--item: 6">Creating process documents and templates</li>
+                    <li style="--item: 7">Managing invoices and payment systems</li>
+                    <li style="--item: 8">Organizing cloud document architecture</li>
+                    <li style="--item: 9">Developing file organization protocols</li>
+                    <li style="--item: 10">Building deposit tracking systems</li>
+                </ul>
+            </section>
             
             <section>
-                <h2>My Goals</h2>
-                <p style="--delay: 2">My current goal is to develop more skills in data management as a business administrator in Catalina and combine my knowledge with CS to start researching, analyzing, and building software that integrates both fields.</p>
+                <h2>Professional Goals</h2>
+                <p style="--delay: 2">My current goal is to work with forward-thinking companies that will allow me to leverage both my IT skills and administrative/business experience. I aim to develop deeper expertise in data management while applying my computer science knowledge to research, analyze, and build innovative software solutions that integrate both technical and business domains for maximum efficiency.</p>
             </section>
             
             <!-- Skills Section -->
@@ -564,7 +649,15 @@
                     <div class="skill-tag" style="--index: 1">Computer Science</div>
                     <div class="skill-tag" style="--index: 2">Data Management</div>
                     <div class="skill-tag" style="--index: 3">Datasets</div>
+                    <div class="skill-tag" style="--index: 4">Database Administration</div>
+                    <div class="skill-tag" style="--index: 5">Document Management</div>
                     <div class="skill-tag" style="--index: 6">Business Administration</div>
+                    <div class="skill-tag" style="--index: 7">Microsoft Excel</div>
+                    <div class="skill-tag" style="--index: 8">Microsoft Word</div>
+                    <div class="skill-tag" style="--index: 9">Microsoft PowerPoint</div>
+                    <div class="skill-tag" style="--index: 10">Data Analysis</div>
+                    <div class="skill-tag" style="--index: 11">File Organization</div>
+                    <div class="skill-tag" style="--index: 12">Cloud Management</div>
                 </div>
             </section>
             
